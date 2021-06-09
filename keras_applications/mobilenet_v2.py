@@ -85,7 +85,7 @@ from . import get_submodules_from_kwargs
 from . import imagenet_utils
 from .imagenet_utils import decode_predictions
 from .imagenet_utils import _obtain_input_shape
-
+import tensorflow as tf
 # TODO Change path to v1.1
 BASE_WEIGHT_PATH = ('https://github.com/JonathanCMitchell/mobilenet_v2_keras/'
                     'releases/download/v1.1/')
@@ -407,13 +407,13 @@ def MobileNetV2(input_shape=None,
             model_name = ('mobilenet_v2_weights_tf_dim_ordering_tf_kernels_' +
                           str(alpha) + '_' + str(rows) + '.h5')
             weight_path = BASE_WEIGHT_PATH + model_name
-            weights_path = keras_utils.get_file(
+            weights_path = tf.keras.utils.get_file(
                 model_name, weight_path, cache_subdir='models')
         else:
             model_name = ('mobilenet_v2_weights_tf_dim_ordering_tf_kernels_' +
                           str(alpha) + '_' + str(rows) + '_no_top' + '.h5')
             weight_path = BASE_WEIGHT_PATH + model_name
-            weights_path = keras_utils.get_file(
+            weights_path = tf.keras.utils.get_file(
                 model_name, weight_path, cache_subdir='models')
         model.load_weights(weights_path)
     elif weights is not None:
