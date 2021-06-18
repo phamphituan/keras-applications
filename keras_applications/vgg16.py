@@ -9,7 +9,7 @@
 from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
-
+import tensorflow as tf
 import os
 
 from . import get_submodules_from_kwargs
@@ -196,13 +196,13 @@ def VGG16(include_top=True,
     # Load weights.
     if weights == 'imagenet':
         if include_top:
-            weights_path = keras_utils.get_file(
+            weights_path = tf.keras.utils.get_file(
                 'vgg16_weights_tf_dim_ordering_tf_kernels.h5',
                 WEIGHTS_PATH,
                 cache_subdir='models',
                 file_hash='64373286793e3c8b2b4e3219cbf3544b')
         else:
-            weights_path = keras_utils.get_file(
+            weights_path = tf.keras.utils.get_file(
                 'vgg16_weights_tf_dim_ordering_tf_kernels_notop.h5',
                 WEIGHTS_PATH_NO_TOP,
                 cache_subdir='models',
